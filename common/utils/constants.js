@@ -1,0 +1,18 @@
+export const Colors = {
+  primary: "#F0F1E7",
+  secondary: "#263749",
+  black: "#000000",
+  yellow: "#F2C94C",
+  white: "#FFFFFF",
+  green: "#27AE60",
+  red: "#EB5757",
+  greyLight: "#F0F1F5",
+  greyMed: "#D8DAE3",
+  greyDark: "#9396A5",
+  shadow: "0 6px 15px rgba(0 0 0 / 0.1)",
+  shadowBig: "0 6px 30px rgba(0 0 0 / 0.2)",
+};
+
+export const DrawerWidth = 230;
+export const PageGutter = "2%";
+export const BlockSpacing = 3;
