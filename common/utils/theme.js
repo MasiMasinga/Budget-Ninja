@@ -101,31 +101,11 @@ theme.typography = {
     subtitle: {
         fontWeight: 400,
         fontSize: "12px",
-        color: Colors.greyDark,
         fontFamily: ThemeFontFamily,
     },
     link: {
         fontWeight: 700,
         fontSize: "14px",
-        color: Colors.primary,
-        fontFamily: ThemeFontFamily,
-    },
-    meta: {
-        fontFamily: ThemeFontFamily,
-        fontWeight: 400,
-        fontSize: "12px",
-        lineHeight: "24px",
-        color: Colors.greyDark,
-        background: Colors.greyMed,
-        padding: '5px 14px',
-        borderRadius: '10px',
-        minWidth: 'fit-content',
-        height: 'fit-content'
-    },
-    tag: {
-        fontWeight: 400,
-        fontSize: "12px",
-        color: Colors.white,
         fontFamily: ThemeFontFamily,
     },
 };
@@ -156,25 +136,25 @@ theme.components = {
                 fontWeight: "700",
                 height: "fit-contents",
                 ...(ownerState.variant === "contained" && {
-                    backgroundColor: Colors.primary,
-                    color: theme.palette.primary.contrastText,
-                    border: `2px solid ${Colors.primary}`,
+                    backgroundColor: Colors.secondary,
+                    color: Colors.primary,
+                    border: `2px solid ${Colors.secondary}`,
                     "&:hover": {
-                        backgroundColor: Colors.primary,
-                        border: `2px solid ${Colors.primary}`,
+                        backgroundColor: Colors.secondary,
+                        border: `2px solid ${Colors.secondary}`,
                     },
                 }),
                 ...(ownerState.variant === "outlined" && {
-                    border: `2px solid ${Colors.primary}`,
+                    border: `2px solid ${Colors.secondary}`,
                     "&:hover": {
-                        backgroundColor: Colors.primary,
-                        color: theme.palette.primary.contrastText,
-                        border: `2px solid ${Colors.primary}`,
+                        backgroundColor: Colors.secondary,
+                        color: Colors.primary,
+                        border: `2px solid ${Colors.secondary}`,
                     },
                 }),
                 ...(ownerState.disabled && {
                     backgroundColor: `${Colors.greyMed} !important`,
-                    color: Colors.greyDark,
+                    color: Colors.primary,
                     border: `2px solid ${Colors.greyMed} !important`,
                     ...(ownerState.variant === "plain" && {
                         backgroundColor: `transparent !important`,
