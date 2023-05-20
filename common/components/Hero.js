@@ -46,7 +46,7 @@ const Hero = () => {
               <Image
                 src="/finance-report-research.png"
                 alt="logo"
-                width={400}
+                width={350}
                 height={350}
               />
             </Stack>
