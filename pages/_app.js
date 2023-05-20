@@ -8,6 +8,11 @@ import { SnackbarProvider } from "notistack";
 import { Global, css } from "@emotion/react";
 import CssBaseline from "@mui/material/CssBaseline";
 
+// Provider
+import { StateProvider } from "@/common/contexts/StateContext";
+import { AuthProvider } from "@/common/contexts/AuthContext";
+import { BudgetProvider } from "@/common/contexts/BudgetContext";
+
 // Theme
 import theme from "@/common/utils/theme";
 
@@ -37,9 +42,15 @@ export default function App({ Component, pageProps }) {
   return (
     <ThemeProvider theme={theme}>
       <SnackbarProvider>
-        <Global styles={GlobalStyle} />
-        <CssBaseline />
-        <Component {...pageProps} />;
+        <StateProvider>
+          <AuthProvider>
+            <BudgetProvider>
+              <Global styles={GlobalStyle} />
+              <CssBaseline />
+              <Component {...pageProps} />
+            </BudgetProvider>
+          </AuthProvider>
+        </StateProvider>
       </SnackbarProvider>
     </ThemeProvider>
   );
