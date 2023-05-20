@@ -16,3 +16,10 @@ export const Colors = {
 export const DrawerWidth = 230;
 export const PageGutter = "2%";
 export const BlockSpacing = 3;
+
+export const ValidationMessages = {
+  required: "Required",
+  isValidEmail: "Invalid Email",
+  passwordTooShort: "Password is too short (minimum 6 characters)",
+  passwordNotMatch: "Passwords not match",
+};
