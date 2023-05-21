@@ -12,6 +12,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { StateProvider } from "@/common/contexts/StateContext";
 import { AuthProvider } from "@/common/contexts/AuthContext";
 import { BudgetProvider } from "@/common/contexts/BudgetContext";
+import { SecurityProvider } from "@/common/contexts/SecurityContext";
 
 // Theme
 import theme from "@/common/utils/theme";
@@ -44,11 +45,13 @@ export default function App({ Component, pageProps }) {
       <SnackbarProvider>
         <StateProvider>
           <AuthProvider>
+            <SecurityProvider>
             <BudgetProvider>
               <Global styles={GlobalStyle} />
               <CssBaseline />
               <Component {...pageProps} />
             </BudgetProvider>
+            </SecurityProvider>
           </AuthProvider>
         </StateProvider>
       </SnackbarProvider>

@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 // Context
 import { AuthContext } from "@/common/contexts/AuthContext";
@@ -28,6 +29,7 @@ import InputField from "@/common/components/InputField";
 import { Colors, ValidationMessages } from "@/common/utils/constants";
 
 const Login = () => {
+  const router = useRouter();
   const { formState } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
 
@@ -39,6 +41,7 @@ const Login = () => {
 
   const onSubmit = handleSubmit((data) => {
     console.log(data);
+    router.push('/dashboard');
   });
 
   return (
@@ -57,7 +60,7 @@ const Login = () => {
               component="form"
               noValidate
               spacing={3}
-              sx={{ px: {xs: 2, sm: 5, md: 10, lg: 20 } }}
+              sx={{ px: { xs: 2, sm: 5, md: 10, lg: 20 } }}
               onSubmit={onSubmit}
             >
               <Typography variant="h5" align="center">

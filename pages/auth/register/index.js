@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 // Context
 import { AuthContext } from "@/common/contexts/AuthContext";
@@ -28,6 +29,7 @@ import InputField from "@/common/components/InputField";
 import { Colors, ValidationMessages } from "@/common/utils/constants";
 
 const Register = () => {
+  const router = useRouter();
   const { formState } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -42,19 +44,26 @@ const Register = () => {
 
   const onSubmit = handleSubmit((data) => {
     console.log(data);
+    router.push("/auth/login");
   });
 
   return (
     <Grid container>
       <Grid item xs={12} sm={6}>
-        <Stack sx={{ bgcolor: Colors.primary, width: {xs: "100vw", sm: '50vw'}, height: "100vh" }}>
+        <Stack
+          sx={{
+            bgcolor: Colors.primary,
+            width: { xs: "100vw", sm: "50vw" },
+            height: "100vh",
+          }}
+        >
           <Stack>
             <Image src="/logo.svg" alt="logo" width={200} height={120} />
             <Stack
               component="form"
               noValidate
               spacing={3}
-              sx={{ px: {xs: 2, sm: 5, md: 10, lg: 20 } }}
+              sx={{ px: { xs: 2, sm: 5, md: 10, lg: 20 } }}
               onSubmit={onSubmit}
             >
               <Typography variant="h5" align="center">
@@ -187,7 +196,12 @@ const Register = () => {
         <Stack
           justifyContent="center"
           alignItems="center"
-          sx={{ bgcolor: Colors.secondary, width: "50vw", height: "100vh", display: {xs: 'none', sm: 'flex'} }}
+          sx={{
+            bgcolor: Colors.secondary,
+            width: "50vw",
+            height: "100vh",
+            display: { xs: "none", sm: "flex" },
+          }}
         >
           <Image
             src="/financial-report.png"
