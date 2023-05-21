@@ -88,7 +88,6 @@ theme.typography = {
   subheader: {
     fontWeight: 400,
     fontSize: "18px",
-    color: Colors.greyDark,
     fontFamily: ThemeFontFamily,
   },
   paragraph: {
