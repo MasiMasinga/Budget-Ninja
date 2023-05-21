@@ -1,9 +1,9 @@
 import React from 'react'
 
-const ServerErrorPage = () => {
+const Error500 = () => {
   return (
-    <div>ServerErrorPage</div>
+    <div>500 - Server-side error occurred</div>
   )
 }
 
-export default ServerErrorPage
+export default Error500
