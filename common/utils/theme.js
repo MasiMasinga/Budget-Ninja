@@ -88,7 +88,6 @@ theme.typography = {
   subheader: {
     fontWeight: 400,
     fontSize: "18px",
-    color: Colors.greyDark,
     fontFamily: ThemeFontFamily,
   },
   paragraph: {
@@ -103,25 +102,9 @@ theme.typography = {
     fontSize: "12px",
     fontFamily: ThemeFontFamily,
   },
-  link: {
-    fontWeight: 700,
-    fontSize: "14px",
-    fontFamily: ThemeFontFamily,
-  },
 };
 
 theme.components = {
-  MuiPaper: {
-    styleOverrides: {
-      root: {
-        //borderRadius: 7,
-        // '&.MuiDialog-paper': {
-        //     margin: '8px !important',
-        //     width: 'auto !important'
-        // }
-      },
-    },
-  },
   MuiTypography: {
     defaultProps: {
       variantMapping: {
@@ -330,23 +313,7 @@ theme.components = {
       },
     },
   },
-  MuiAlert: {
-    styleOverrides: {
-      root: {
-        fontFamily: ThemeFontFamily,
-        "& .MuiAlert-icon": {
-          alignItems: "center",
-        },
-      },
-    },
-  },
-  MuiAlertTitle: {
-    styleOverrides: {
-      root: {
-        fontFamily: ThemeFontFamily,
-      },
-    },
-  },
+
 };
 
 export default theme;
