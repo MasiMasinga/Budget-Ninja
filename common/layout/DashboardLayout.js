@@ -5,7 +5,6 @@ import Image from "next/image";
 import { styled, useTheme } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
@@ -74,6 +73,7 @@ const Drawer = styled(MuiDrawer, {
   flexShrink: 0,
   whiteSpace: "nowrap",
   boxSizing: "border-box",
+  backgroundColor: 'red',
   ...(open && {
     ...openedMixin(theme),
     "& .MuiDrawer-paper": openedMixin(theme),
@@ -99,12 +99,12 @@ const DashboardLayout = ({ children }) => {
   const NavItems = [
     {
       name: "Dashboard",
-      icon: <HomeIcon sx={{ color: "black !important" }} />,
+      icon: <HomeIcon sx={{ color: `${Colors.black} !important` }} />,
       path: "/dashboard",
     },
     {
       name: "Security",
-      icon: <GppGoodOutlinedIcon sx={{ color: "black !important" }} />,
+      icon: <GppGoodOutlinedIcon sx={{ color: `${Colors.black} !important` }} />,
       path: "/security",
     },
   ];
@@ -112,38 +112,39 @@ const DashboardLayout = ({ children }) => {
   return (
     <Box sx={{ display: "flex" }}>
       <AppBar position="fixed" open={open}>
-        <Toolbar sx={{ bgcolor: Colors.primary, display: open && "none" }}>
-          <IconButton
-            onClick={() => setOpen(true)}
-            edge="start"
-            sx={{
-              marginRight: 5,
-              ...(open && { display: "none" }),
-            }}
-          >
-            <MenuIcon sx={{ color: Colors.black }} />
-          </IconButton>
-        </Toolbar>
+        <IconButton
+          onClick={() => setOpen(true)}
+          edge="start"
+          sx={{
+            marginRight: 5,
+            ...(open && { display: "none" }),
+            position: 'absolute',
+            left: '25px',
+            top: '10px',
+          }}
+        >
+          <MenuIcon sx={{ color: Colors.black }} />
+        </IconButton>
       </AppBar>
 
       <Drawer variant="permanent" open={open}>
-        <DrawerHeader sx={{bgcolor: Colors.primary}}>
-          <IconButton onClick={() => setOpen(false)}>
+        <DrawerHeader sx={{ bgcolor: Colors.primary }}>
+          <IconButton onClick={() => setOpen(false)} sx={{ display: !open && 'none' }} >
             {theme.direction === "rtl" ? (
-              <ChevronRightIcon />
+              <ChevronRightIcon sx={{ color: `${Colors.black} !important` }} />
             ) : (
-              <ChevronLeftIcon />
+              <ChevronLeftIcon sx={{ color: `${Colors.black} !important` }} />
             )}
           </IconButton>
         </DrawerHeader>
 
-        <Stack alignItems="center" sx={{bgcolor: Colors.primary}}>
-          <Image src="/logo.svg" width={100} height={100} alt='logo'/>
+        <Stack alignItems="center" sx={{ bgcolor: Colors.primary }}>
+          <Image src="/logo.svg" width={100} height={100} alt='logo' />
         </Stack>
 
         <Divider />
 
-        <List sx={{bgcolor: Colors.primary}}>
+        <List sx={{ bgcolor: Colors.primary }}>
           {NavItems.map((item, index) => (
             <Link underline='none' href={item.path} key={index}>
               <ListItem disablePadding sx={{ display: "block" }}>
@@ -175,7 +176,7 @@ const DashboardLayout = ({ children }) => {
 
         <Divider />
 
-        <List sx={{bgcolor: Colors.primary}}>
+        <List sx={{ bgcolor: Colors.primary, height: "100%" }}>
           <ListItem disablePadding sx={{ display: "block" }}>
             <ListItemButton
               sx={{
@@ -211,7 +212,7 @@ const DashboardLayout = ({ children }) => {
       >
         {children}
       </Box>
-    </Box>
+    </Box >
   );
 };
 

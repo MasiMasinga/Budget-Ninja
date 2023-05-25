@@ -46,11 +46,11 @@ export default function App({ Component, pageProps }) {
         <StateProvider>
           <AuthProvider>
             <SecurityProvider>
-            <BudgetProvider>
-              <Global styles={GlobalStyle} />
-              <CssBaseline />
-              <Component {...pageProps} />
-            </BudgetProvider>
+              <BudgetProvider>
+                <Global styles={GlobalStyle} />
+                <CssBaseline />
+                <Component {...pageProps} />
+              </BudgetProvider>
             </SecurityProvider>
           </AuthProvider>
         </StateProvider>

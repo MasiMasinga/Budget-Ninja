@@ -21,7 +21,7 @@ const DeleteBudgetCard = () => {
         spacing={2}
         sx={{
           width: "100%",
-          height: "250px",
+          height: "100%",
           borderRadius: "10px",
           px: 5,
           border: "2px solid black",
@@ -47,7 +47,7 @@ const DeleteBudgetCard = () => {
             R222.00 remaining
           </Typography>
         </Stack>
-        <Stack sx={{ px: 10 }}>
+        <Stack sx={{ px: 10, py: 2 }}>
           <Button href="/budget/1" endIcon={<DeleteOutlineOutlinedIcon />}>
             Delete Budget
           </Button>

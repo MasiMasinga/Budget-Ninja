@@ -15,9 +15,9 @@ import ExpenseForm from "./components/ExpenseForm";
 import ViewBudgetCard from "./components/ViewBudgetCard";
 
 const Dashboard = () => {
-  const {} = useContext(AuthContext);
+  const { } = useContext(AuthContext);
 
-  const {} = useContext(BudgetContext);
+  const { } = useContext(BudgetContext);
 
   return (
     <DashboardLayout>
@@ -39,12 +39,11 @@ const Dashboard = () => {
       </Typography>
 
       <Grid container spacing={2}>
-        <Grid item xs={12} md={6}>
-          <ViewBudgetCard />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <ViewBudgetCard />
-        </Grid>
+        {[0, 1].map((index) => (
+          <Grid item xs={12} md={6} key={index}>
+            <ViewBudgetCard />
+          </Grid>
+        ))}
       </Grid>
     </DashboardLayout>
   );
