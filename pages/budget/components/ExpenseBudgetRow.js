@@ -14,62 +14,67 @@ import Typography from "@/common/components/Typography";
 // Utils
 import { Colors } from '@/common/utils/constants';
 
-const ExpenseBudgetRow = () => {
+const ExpenseBudgetRow = ({
+  expense: {
+    expense_name,
+    expense_amount,
+  }
+}) => {
   return (
     <Grid container spacing={0.25} py={0.15} sx={{ flexWrap: "nowrap" }}>
-        <Grid item xs={0.5} sx={{ minWidth: "70px" }}>
-          <Typography
-            variant={"paragraph"}
-            sx={{
-              backgroundColor: Colors.greyMed,
-              borderRadius: 0.5,
-              p: 1.5,
-            }}
-          >
-            Coffee
-          </Typography>
-        </Grid>
-        <Grid item xs={2.5} sx={{ minWidth: "175px" }}>
-          <Typography
-            variant="paragraph"
-            sx={{
-              backgroundColor: Colors.greyMed,
-              borderRadius: 0.5,
-              p: 1.5,
-            }}
-          >
-            R2,200.00	
-          </Typography>
-        </Grid>
-        <Grid item xs={2} sx={{ minWidth: "125px" }}>
-          <Typography
-            variant="paragraph"
-            sx={{
-              backgroundColor: Colors.greyMed,
-              borderRadius: 0.5,
-              p: 1.5,
-            }}
-          >
-            21/05/2023	
-          </Typography>
-        </Grid>
-        <Grid item xs={7} sx={{ minWidth: "305px" }}>
-          <Stack
-            direction="row"
-            sx={{
-              backgroundColor: Colors.greyMed,
-              borderRadius: 0.5,
-            }}
-            textAlign="left"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <IconButton sx={{ p: 1.35}}>
-              <DeleteOutlineOutlinedIcon />
-            </IconButton>
-          </Stack>
-        </Grid>
+      <Grid item xs={0.5} sx={{ minWidth: "70px" }}>
+        <Typography
+          variant={"paragraph"}
+          sx={{
+            backgroundColor: Colors.greyMed,
+            borderRadius: 0.5,
+            p: 1.5,
+          }}
+        >
+          {expense_name}
+        </Typography>
       </Grid>
+      <Grid item xs={2.5} sx={{ minWidth: "175px" }}>
+        <Typography
+          variant="paragraph"
+          sx={{
+            backgroundColor: Colors.greyMed,
+            borderRadius: 0.5,
+            p: 1.5,
+          }}
+        >
+          R{expense_amount}
+        </Typography>
+      </Grid>
+      <Grid item xs={2} sx={{ minWidth: "125px" }}>
+        <Typography
+          variant="paragraph"
+          sx={{
+            backgroundColor: Colors.greyMed,
+            borderRadius: 0.5,
+            p: 1.5,
+          }}
+        >
+          21/05/2023
+        </Typography>
+      </Grid>
+      <Grid item xs={7} sx={{ minWidth: "305px" }}>
+        <Stack
+          direction="row"
+          sx={{
+            backgroundColor: Colors.greyMed,
+            borderRadius: 0.5,
+          }}
+          textAlign="left"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <IconButton sx={{ p: 1.35 }}>
+            <DeleteOutlineOutlinedIcon />
+          </IconButton>
+        </Stack>
+      </Grid>
+    </Grid>
   )
 }
 

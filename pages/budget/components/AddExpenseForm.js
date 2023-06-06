@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 // Mui
 import Stack from "@mui/material/Stack";
+
+// Context
+import { BudgetContext } from '@/pages/budget/contexts/BudgetContext';
 
 // React Hook Form
 import { useForm, Controller } from "react-hook-form";
@@ -18,10 +21,18 @@ import InputField from '@/common/components/InputField';
 import { Colors, ValidationMessages } from "@/common/utils/constants";
 
 const AddExpenseForm = () => {
-  const { handleSubmit, control } = useForm();
+
+  const { handleCreateExpense } = useContext(BudgetContext);
+
+  const { handleSubmit, control } = useForm({
+    defaultValues: {
+      expense_name: '',
+      expense_amount: '',
+    }
+  });
 
   const onSubmit = handleSubmit((data) => {
-    console.log(data)
+    handleCreateExpense(data)
   })
 
   return (
@@ -37,7 +48,7 @@ const AddExpenseForm = () => {
           height: "100%",
           borderRadius: "10px",
           px: 5,
-          border: "2px solid black",
+          border: `2px solid ${Colors.black}`,
           bgcolor: Colors.white,
         }}
       >
@@ -59,7 +70,7 @@ const AddExpenseForm = () => {
           )}
         />
         <Controller
-          name="amount"
+          name="expense_amount"
           control={control}
           rules={{
             required: ValidationMessages.required,

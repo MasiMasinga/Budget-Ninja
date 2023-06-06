@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 
 // Context
 import { AuthContext } from "@/common/contexts/AuthContext";
-import { BudgetContext } from "@/common/contexts/BudgetContext";
+import { BudgetContext } from "@/pages/budget/contexts/BudgetContext";
 
 // Mui
 import Grid from "@mui/material/Grid";
@@ -13,16 +13,16 @@ import Typography from "@/common/components/Typography";
 import BudgetForm from "./components/BudgetForm";
 import ExpenseForm from "./components/ExpenseForm";
 import ViewBudgetCard from "./components/ViewBudgetCard";
+import NoDataBlock from '@/common/components/NoDataBlock'
 
 const Dashboard = () => {
-  const { } = useContext(AuthContext);
-
-  const { } = useContext(BudgetContext);
+  const { formState } = useContext(AuthContext);
+  const { budgetFormState } = useContext(BudgetContext);
 
   return (
     <DashboardLayout>
       <Typography variant="h4" mt mb>
-        Welcome back, Masibonge
+        Welcome back, {formState.first_name}
       </Typography>
 
       <Grid container spacing={2}>
@@ -39,11 +39,16 @@ const Dashboard = () => {
       </Typography>
 
       <Grid container spacing={2}>
-        {[0, 1].map((index) => (
-          <Grid item xs={12} md={6} key={index}>
-            <ViewBudgetCard />
-          </Grid>
-        ))}
+        {
+          budgetFormState.length > 0 ?
+            budgetFormState.map((budget, index) => (
+              <Grid key={index} item xs={12} md={6}>
+                <ViewBudgetCard budget={budget} />
+              </Grid>
+            ))
+            :
+            <NoDataBlock message="No budget has been created" />
+        }
       </Grid>
     </DashboardLayout>
   );

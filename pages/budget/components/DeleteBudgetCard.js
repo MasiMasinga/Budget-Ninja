@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 // Mui
 import Stack from "@mui/material/Stack";
+
+// Context
+import { BudgetContext } from '@/pages/budget/contexts/BudgetContext'
 
 // Mui Icons
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
@@ -14,7 +17,15 @@ import { LinearProgressBar } from "@/common/components/LinearProgressBar";
 // Utils
 import { Colors } from "@/common/utils/constants";
 
-const DeleteBudgetCard = () => {
+const DeleteBudgetCard = ({
+  budget: {
+    budget_name,
+    budget_amount,
+  }
+}) => {
+
+  const { remainingBudget, spentBudget, handleDeleteExpense } = useContext(BudgetContext);
+
   return (
     <Stack alignItems="center">
       <Stack
@@ -24,31 +35,31 @@ const DeleteBudgetCard = () => {
           height: "100%",
           borderRadius: "10px",
           px: 5,
-          border: "2px solid black",
+          border: `2px solid ${Colors.black}`,
           bgcolor: Colors.white,
         }}
       >
         <Stack direction="row" justifyContent="space-between">
           <Typography variant="subheader" mt mb bold>
-            Groceries
+            {budget_name}
           </Typography>
           <Typography variant="subheader" mt mb>
-            R200.00 Budgeted
+            R{budget_amount} Budgeted
           </Typography>
         </Stack>
         <Stack>
-          <LinearProgressBar variant="determinate" value={50} />
+          <LinearProgressBar variant="determinate" value={spentBudget} />
         </Stack>
         <Stack direction="row" justifyContent="space-between">
           <Typography variant="paragraph" mt mb>
-            R0.00 spent
+            R{spentBudget} spent
           </Typography>
           <Typography variant="paragraph" mt mb>
-            R222.00 remaining
+            R{remainingBudget} remaining
           </Typography>
         </Stack>
         <Stack sx={{ px: 10, py: 2 }}>
-          <Button href="/budget/1" endIcon={<DeleteOutlineOutlinedIcon />}>
+          <Button onClick={handleDeleteExpense} endIcon={<DeleteOutlineOutlinedIcon />}>
             Delete Budget
           </Button>
         </Stack>

@@ -9,10 +9,11 @@ import { Global, css } from "@emotion/react";
 import CssBaseline from "@mui/material/CssBaseline";
 
 // Provider
+import { SessionProvider } from "next-auth/react"
 import { StateProvider } from "@/common/contexts/StateContext";
 import { AuthProvider } from "@/common/contexts/AuthContext";
-import { BudgetProvider } from "@/common/contexts/BudgetContext";
-import { SecurityProvider } from "@/common/contexts/SecurityContext";
+import { BudgetProvider } from "@/pages/budget/contexts/BudgetContext";
+import { SecurityProvider } from "@/pages/security/contexts/SecurityContext";
 
 // Theme
 import theme from "@/common/utils/theme";
@@ -39,21 +40,23 @@ const GlobalStyle = css`
   }
 `;
 
-export default function App({ Component, pageProps }) {
+export default function App({ session, Component, pageProps }) {
   return (
     <ThemeProvider theme={theme}>
       <SnackbarProvider>
-        <StateProvider>
-          <AuthProvider>
-            <SecurityProvider>
-              <BudgetProvider>
-                <Global styles={GlobalStyle} />
-                <CssBaseline />
-                <Component {...pageProps} />
-              </BudgetProvider>
-            </SecurityProvider>
-          </AuthProvider>
-        </StateProvider>
+        <SessionProvider session={session}>
+          <StateProvider>
+            <AuthProvider>
+              <SecurityProvider>
+                <BudgetProvider>
+                  <Global styles={GlobalStyle} />
+                  <CssBaseline />
+                  <Component {...pageProps} />
+                </BudgetProvider>
+              </SecurityProvider>
+            </AuthProvider>
+          </StateProvider>
+        </SessionProvider>
       </SnackbarProvider>
     </ThemeProvider>
   );

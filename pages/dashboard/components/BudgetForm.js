@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
+
+// Context
+import { BudgetContext } from '@/pages/budget/contexts/BudgetContext';
 
 // Mui
 import Stack from "@mui/material/Stack";
@@ -19,10 +22,17 @@ import { Colors, ValidationMessages } from "@/common/utils/constants";
 
 const BudgetForm = () => {
 
-  const { handleSubmit, control } = useForm();
+  const { handleCreateBudget } = useContext(BudgetContext);
+
+  const { handleSubmit, control } = useForm({
+    defaultValues: {
+      budget_name: '',
+      budget_amount: '',
+    },
+  });
 
   const onSubmit = handleSubmit((data) => {
-    console.log(data)
+    handleCreateBudget(data);
   })
 
   return (
@@ -38,7 +48,7 @@ const BudgetForm = () => {
           height: "100%",
           borderRadius: "10px",
           px: 5,
-          border: "2px solid black",
+          border: `2px solid ${Colors.black}`,
           bgcolor: Colors.white,
         }}
       >
@@ -60,7 +70,7 @@ const BudgetForm = () => {
           )}
         />
         <Controller
-          name="amount"
+          name="budget_amount"
           control={control}
           rules={{
             required: ValidationMessages.required,

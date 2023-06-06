@@ -1,6 +1,8 @@
 import React, { useState, useContext } from "react";
 import Image from "next/image";
-import { useRouter } from "next/router";
+
+// Next Auth
+import { signIn } from 'next-auth/react'
 
 // Context
 import { AuthContext } from "@/common/contexts/AuthContext";
@@ -29,8 +31,7 @@ import InputField from "@/common/components/InputField";
 import { Colors, ValidationMessages } from "@/common/utils/constants";
 
 const Register = () => {
-  const router = useRouter();
-  const { formState } = useContext(AuthContext);
+  const { formState, handleCreateAccount } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -44,7 +45,7 @@ const Register = () => {
 
   const onSubmit = handleSubmit((data) => {
     console.log(data);
-    router.push("/auth/login");
+    handleCreateAccount(data);
   });
 
   return (
@@ -174,7 +175,7 @@ const Register = () => {
               <Button type="submit" variant="contained">
                 Create Account
               </Button>
-              <Button type="submit" startIcon={<GoogleIcon />}>
+              <Button type="submit" onClick={() => signIn('google')} startIcon={<GoogleIcon />}>
                 Sign Up with Google
               </Button>
               <Stack

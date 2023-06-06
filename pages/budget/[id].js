@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 
 // Mui
 import Grid from "@mui/material/Grid";
+
+// Context
+import { BudgetContext } from "@/pages/budget/contexts/BudgetContext";
 
 // Layout
 import DashboardLayout from "@/common/layout/DashboardLayout";
@@ -13,6 +16,9 @@ import DeleteBudgetCard from "./components/DeleteBudgetCard";
 import ExpenseView from "./components/ExpenseView";
 
 const BudgetDetails = () => {
+
+  const { budgetFormState} = useContext(BudgetContext);
+
   return (
     <DashboardLayout>
       <Typography variant="h4" mt mb>
@@ -21,7 +27,7 @@ const BudgetDetails = () => {
 
       <Grid container spacing={2}>
         <Grid item xs={12} md={5}>
-          <DeleteBudgetCard />
+          <DeleteBudgetCard  budget={budgetFormState} />
         </Grid>
         <Grid item xs={12} md={7}>
           <AddExpenseForm />

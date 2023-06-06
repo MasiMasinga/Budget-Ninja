@@ -16,18 +16,18 @@ model User {
 }
 
 model Budget {
-  id       Int       @id @default(autoincrement())
-  name     String
-  amount   Float
-  user     User      @relation(fields: [userId], references: [id])
-  userId   Int
-  expenses Expense[]
+  id            Int       @id @default(autoincrement())
+  budget_name   String
+  budget_amount Float
+  user          User      @relation(fields: [userId], references: [id])
+  userId        Int
+  expenses      Expense[]
 }
 
 model Expense {
-  id       Int    @id @default(autoincrement())
-  name     String
-  amount   Float
-  budget   Budget @relation(fields: [budgetId], references: [id])
-  budgetId Int
+  id             Int    @id @default(autoincrement())
+  expense_name   String
+  expense_amount Float
+  budget         Budget @relation(fields: [budgetId], references: [id])
+  budgetId       Int
 }
