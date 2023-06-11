@@ -31,15 +31,5 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.9",
     "styled-components": "^6.0.0-rc.1"
-  },
-  "devDependencies": {
-    "@storybook/addon-essentials": "^7.0.18",
-    "@storybook/addon-interactions": "^7.0.18",
-    "@storybook/addon-links": "^7.0.18",
-    "@storybook/blocks": "^7.0.18",
-    "@storybook/nextjs": "^7.0.18",
-    "@storybook/react": "^7.0.18",
-    "@storybook/testing-library": "^0.0.14-next.2",
-    "storybook": "^7.0.18"
   }
 }
